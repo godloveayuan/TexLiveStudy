@@ -35,6 +35,9 @@
 % 使用图片
 \usepackage{graphicx}
 
+% 不带编号的公式使用，使用矩阵
+\usepackage{amsmath}
+
 % 指定存放图片的文件夹路径
 \graphicspath{{pictures/},{photoes/}}
 
@@ -255,6 +258,157 @@
 		\end{tabular}
 		\label{firsttable}
 	\end{table}
+ 	
+ 	
+% == 9. 数学公式
+	\section{基本数学公式}
+	
+	\subsection{行内公式}
+	% 使用单个美元符号排版
+	$ x^2+y^2=1 $
+	
+	% 使用小括号排版
+	\( x^2+y^2=1 \)
+	
+	% 使用math环境排版
+	\begin{math}
+		x^2+y^2=1
+	\end{math}
+ 	
+ 	\subsection{上下标}
+ 	% 上标使用 ^ 与{}配合，否则只将一位数字认为是上标
+ 	$ 3x^20 + 2y^10 =0 $ 
+ 	
+ 	$ 3x^{20} + 2y^{10} =0 $
+ 	
+ 	$ x^{p^2+q^2}+y^{n^2+m^2}=0 $
+ 	% 下标使用 _ 实现
+ 	$ a_2 + b_2 =0 $
+ 	
+ 	$ a_20 + b_20 =0 $
+ 	
+ 	$ a_{20} + b_{20} =0 $
+ 	
+ 	\subsection{希腊字母}
+ 	$ \alpha $		\\
+ 	$ \beta $		\\
+ 	$ \gamma $		\\
+ 	$ \epsilon $	\\
+ 	$ \pi $			\\
+ 	$ \omega $		\\
+ 	$ \Gamma $		\\
+ 	$ \Delta $		\\
+ 	$ \Theta $		\\
+ 	$ \Pi $			\\
+ 	$ \Omega $		\\
+ 	
+ 	$ \alpha^2 + \beta^2 + \gamma^2 =1 $
+ 	
+ 	\subsection{数学函数}
+ 	$ \log $
+ 	$ \sin $
+ 	$ \cos $
+ 	$ \arcsin $
+ 	$ \arccos $
+ 	$ \ln $
+ 	$ \log $
+ 	
+ 	$ \sin^2x + \cos^2x = 1 $
+ 	
+ 	% 排版根式
+ 	$ \sqrt{2} $
+ 	$ \sqrt[3]{9} $
+ 	$ \sqrt[3]{ \sin^2x + \cos^2y + \sqrt{5} } $
+ 	
+ 	\subsection{分式}
+ 	% 一行
+ 	$ 3/4 $
+ 	
+ 	% 上下结构
+ 	$ \frac{3}{4} $
+ 	
+ 	\subsection{行间公式}
+ 	% $$ 两个美元符号
+ 	$$ \cos^2 + \sin^2 = 1 $$ 
+ 	% 中括号
+ 	交换律是： \[ a+b = b+a \]
+ 	% 使用 displaymath
+ 	\begin{displaymath}
+ 		\cos^2 + \sin^2 = 1
+ 	\end{displaymath}
+ 	
+ 	\subsection{对公式编号}
+ 	% 使用 equation
+ 	数学公式见式 \ref{eq1}	% 引用公式
+ 	\begin{equation}
+ 		x^2 + y^2 =1 
+ 		\label{eq1}
+ 	\end{equation}
+ 	
+ 	\subsection{不对公式编号}
+ 	不编号的公式，见式\ref{eq2} ，使用章节编号
+ 	% 使用 equation* 需要使用宏包 amsmath
+ 	\begin{equation*}
+ 		x^2 + y^2 =1 
+ 		\label{eq2}
+ 	\end{equation*}
+ 	
+% == 10. 排版矩阵
+
+	% 使用 matrix ,引入 amsmath 宏包
+	% 与tabular 表格一样，用 & 分割列，用 \\ 分割行
+	% 在矩阵中也可以使用数学公式
+
+	\[
+		\begin{matrix}
+		0 & 1 \\
+		1 & 0
+		\end{matrix}
+	\]
+	
+	% pmatrix 用于在矩阵两端加小括号
+	\[
+		\begin{pmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{pmatrix}
+	\]
+	
+	% bmatrix 加中括号
+	\[
+		\begin{bmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{bmatrix}
+	\]
+	
+	% Bmatrix 加大括号
+	\[
+		\begin{Bmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{Bmatrix}
+	\]
+	
+	% vmatrix 加单竖线
+	\[
+		\begin{vmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{vmatrix}
+	\]
+	
+	% Vmatrix 加双竖线
+	\[
+		\begin{Vmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{Vmatrix}
+	\]
+	
+	% 常用省略号 
+ 	\(	\dots  \vdots  \ddots \)
+ 	
  	
  % 文章结束
  \end{document}
