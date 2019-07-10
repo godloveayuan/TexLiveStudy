@@ -1,0 +1,260 @@
+% 这是注释，不会出现在pdf文档里
+
+% ----------------------------------
+% 支持中文，使用 ctexart， 编码需要设置为GBK
+% 使用ctexart时，\section默认是居住排版的
+%-----------------------------------
+\documentclass[]{ctexart}	    
+
+% === 设置标题的格式 ===
+\ctexset{
+	section = {
+		format+= \zihao{-4} \heiti \raggedright,	% 控制左对齐
+		name={,、},
+		number = \chinese{section},
+		beforeskip=1.0ex plus 0.2ex minus .2ex,
+		afterskip = 1.0ex plus 0.2ex minus .2ex,
+		aftername = \hspace{0pt}
+	},
+	subsection = {
+		format+= \zihao{5} \heiti \raggedright,	% 控制左对齐
+		name={,、},
+		number = \arabic{section},		% 章节编号，阿拉伯数字
+		beforeskip=1.0ex plus 0.2ex minus .2ex,
+		afterskip = 1.0ex plus 0.2ex minus .2ex,
+		aftername = \hspace{0pt}
+	}
+}
+
+%\documentclass[
+%10pt,		% 文字默认字体大小，一般只有10,11,12 pt
+%]{article}			% 使用article时，不支持中文
+
+% 编辑中文内容需要引用的宏包
+\usepackage{ctex}
+% 使用图片
+\usepackage{graphicx}
+
+% 指定存放图片的文件夹路径
+\graphicspath{{pictures/},{photoes/}}
+
+% 定义新命令
+\newcommand{\mycommend}{\textit{\textbf{\textsf{Fancy Text}}}}
+
+% 文章开始
+\begin{document} 
+% == 1. 中文，使用 ctex包， xelatex 编译模式
+	你好，中国
+	
+% == 2. 数学公式
+ 	hello $f(x)=3x^2-x-1$
+ 	$$ f(x)=x^y-z+x$$
+ 	$$ f(x)=(x-y)^p/(z-x)^1/p $$
+ 	
+% == 3. 字体族设置 （罗马字体，无衬线字体，打印机字体）
+ 	% 罗马字体
+ 	\textrm{这些内容用罗马字体显示 Roman Family}
+ 	
+ 	% 无衬线字体
+ 	\textsf{这些内容用无衬线字体显示 Sans Serif Family}
+ 	
+ 	% 打印机字体
+ 	\texttt{这些内容用打印机字体显示 Typewriter Family}
+ 	
+ 	% 声明后续字体为罗马字体
+ 	\rmfamily 声明后续字体都为罗马字体
+ 	
+ 	% 声明后续字体都为无衬线字体
+ 	\sffamily 声明后续字体都为无衬线字体
+ 	
+ 	% 声明后续字体都为打印机字体
+ 	\ttfamily 声明后续字体都为打印机字体
+ 	
+ 	% 使用大括号限定字体作用范围
+ 	{\sffamily 这些内容限定使用无衬线字体}
+ 	
+ 	这是后续内容，当遇到其他字体声明时，会启用新的字体声明，否则延续上文声明的字体,
+ 	
+ 	% 字体系列设置(粗细、宽度)
+ 	\textmd{中等尺寸字体,Medium Series}  \\
+	\textbf{加粗字体, Boldface Series} 	\\
+	% 字体形状设置(直立、斜体、伪斜体、小型大写)
+	\textup{直立字体，Upright Shape}		\\
+	\textit{斜体，Italic Shape}		\\
+	\textsl{伪斜体，Slanted Shape}	\\
+	\textsc{小型大写，Small Caps Shape}	\\
+	% 设置影响后续内容
+	{\upshape 影响后续内容为直立字体，大括号限制作用域 Upright Shape} \\
+	{\itshape 影响后续内容为斜体字体，大括号限制作用域 Italic Shape} \\
+	{\slshape 影响后续内容为伪斜体字体，大括号限制作用域 Slanted Shape} \\
+	{\scshape 影响后续内容为小型大写字体，大括号限制作用域 Small Caps Shape} \\
+	% 中文字体
+	{\songti 宋体} \quad 
+	{\heiti 黑体} \quad
+	{\fangsong 仿宋} \quad
+	{\kaishu 楷书} \quad 	
+	\quad 是空格 \\
+	{\textbf 中文粗体使用黑体表示}\\
+	{\textit 中文斜体使用楷书表示} \\
+	
+	% 字体大小，相对于 \documentclass 声明中的 normal 字体大小
+	{\tiny 			hello}\\
+	{\scriptsize 	hello}\\
+	{\footnotesize	hello}\\
+	{\small			hello}\\
+	{\normalsize	hello}\\
+	{\large			hello}\\
+	{\Large			hello}\\
+	{\LARGE			hello}\\
+	{\huge			hello}\\
+	{\Huge			hello}\\
+	
+	% 中文设置字号
+	\zihao{-0} 初号字 \\
+	\zihao{5} 5号字   \\
+	
+	% 使用自定义命令
+	\mycommend
+	
+% == 4. 章节结果
+	% 产生目录
+	\tableofcontents
+
+	% section 构建章节， 加*号去掉自动编号
+	\section*{引言}
+	\subsection*{小节}
+	这是引言的内容\\ 这是换行，首行并不缩进，换行符合不能出行在一行的开头。
+	
+	使用空行也能换行，一个空行或多个空行效果是一样的，这种换行会首行缩进。
+	
+	\paragraph{段落标题} 产生新的段落
+	
+	\section{第一章}
+	% subsection 构建小节
+	\subsection{第一小节}
+	\subsubsection{三级小节}
+	
+	\section{第二章}
+	\subsection{第一小节}
+	
+	\section{第三章}
+	\subsection{第一小节}
+	
+	% \documentclass 是 texbook 时可以使用 \chapter{} 命令
+ 	
+
+% == 5. 特殊字符
+	\section{空白符}
+	% 空行分段：多个空行等同与一个
+	% 自动缩进：绝对不能使用空格代替
+	% 空格：英文中多个处理为1个，中文中空格被忽略
+	% 汉字与其他字符的间距会自动有 XeLaTex 处理
+	% 禁止使用中文全角空格
+	% 使用空白符时，如下：
+	a\quad b	% 1em
+	a\qquad b	% 2em
+	a\thinspace b 或 a\,b	% 约位 1/6个em
+	a\enspace b	% 0.5em
+	a~b			% 硬空格
+	% 1pc=12pt=4.218em
+	a\kern 1pc b
+	a\kern -1em b
+	a\hskip 1emb
+	a\hspace{35pt}b
+	
+	a\hphantom{xyz}b	%占位宽度
+	a\hfill b			% 弹性长度
+	
+	\section{控制符}
+	% & #、$、%、{、}、~、等符号都有特殊意义，要输入原符号时需要加反斜线转义
+	\# \$ \{ \} \_{} \~{} \^{} 
+	这是一个换行符号：\textbackslash 
+	
+	\&
+
+	\section{排版特殊符号}
+	\S \P \dag \ddag \copyright \pounds
+	
+	\section{\TeX 标志符号}
+	\TeX{}
+	\LaTeX{}
+	\LaTeXe{}
+	
+% == 6. 插入图片
+	\section{插入图片}
+	% 使用 \usepackage{graphicx} 宏包
+	% 导言区： \usepackage{graphicx}
+	% 语  法： \includegraphics[<选项>]{<文件名>}
+	% 文件格式：\ EPS， PDF，PNG, JPEG, BMP
+	\includegraphics{imgtest}	% 可以省略文件后缀名
+	% 通过可选参数指定缩放、高度
+	\includegraphics[
+	%width=13cm,		% 图片宽度
+	%height=8cm,		% 图片高度
+	%width=0.1\textwidth,	% 相对宽度
+	%height=0.1\textheight,	% 相对高度
+	scale=0.5,			% 图片缩放
+	]{imgtest.jpg}
+	
+% == 7. 表格
+	\section{插入表格}
+	% 使用 tabular生成表格
+	% 生成5列的表格 l:左对齐，c:居中对齐, r:右对齐 , | 产生表格竖线， || 产生双竖线
+	% p 指定列宽度
+	\begin{tabular}{l || c  c | p{1.5cm} | r}
+		\hline   % 产生表格横线	
+		姓名 & 语文 & 数学 & 外语 & 备注 \\ % 用 & 作为列分隔符 ，\\ 产生新行	
+		\hline \hline  % 产生双横线
+		张三 & 100 & 100 & 100 & 优秀 \\	
+		\hline   % 产生表格横线
+	\end{tabular}
+
+	% 使用 booktab 宏包实现三线表
+	% 使用 longtab 宏包实现跨页长表格
+	
+	
+% == 8. 浮动环境
+	% 使用浮动体可以：实现灵活分页
+	% 给图片添加标题
+	% 引用图表编号
+	% 排版参数：
+	% h : 此处(here) 代码所在的上下文位置
+	% t : 页顶(top), 代码所在页或之后页的顶部
+	% b : 页底(bottom), 代码所在页或之后页的底部
+	% p : 独立一页(page)
+
+	% 图片浮动
+	\section{图片浮动}
+	想看美女吗，见图\ref{mm}
+	\begin{figure}[htbp]
+		\centering			% 居中
+		
+		\includegraphics[
+		%width=13cm,		% 图片宽度
+		%height=8cm,		% 图片高度
+		%width=0.1\textwidth,	% 相对宽度
+		%height=0.1\textheight,	% 相对高度
+		scale=0.5,			% 图片缩放
+		]{imgtest.jpg}
+		\caption{美女}		% 设置图片标题，命令在图片下则标题在图片下，自动编号
+		\label{mm}			% 生成标签
+	\end{figure}
+	
+	% 表格浮动
+	\section{表格浮动}
+	想看成绩吗 ，见表 \ref{firsttable}
+	\begin{table}[htbp]		% [位置参数]
+		\centering			% 居中
+		\caption{成绩表}		% 设置表格标题，自动编号
+		\begin{tabular}{l || c  c | p{1.5cm} | r}
+			\hline   % 产生表格横线	
+			姓名 & 语文 & 数学 & 外语 & 备注 \\ % 用 & 作为列分隔符 ，\\ 产生新行	
+			\hline \hline  % 产生双横线
+			张三 & 100 & 100 & 100 & 浮动表格 \\	
+			\hline   % 产生表格横线
+		\end{tabular}
+		\label{firsttable}
+	\end{table}
+ 	
+ % 文章结束
+ \end{document}
