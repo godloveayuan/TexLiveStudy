@@ -38,6 +38,14 @@
 % 不带编号的公式使用，使用矩阵
 \usepackage{amsmath}
 
+% 多行数学公式使用
+\usepackage{amssymb}
+
+% 使用文件的参考文献， plain： 排版样式 ， 还有 alpha
+\bibliographystyle{plain}
+% 使用 natbib 宏包可以使用更多的样式
+%\usepackage[round]{natbib}
+
 % 指定存放图片的文件夹路径
 \graphicspath{{pictures/},{photoes/}}
 
@@ -261,7 +269,7 @@
  	
  	
 % == 9. 数学公式
-	\section{基本数学公式}
+	\section{数学模式—基本数学公式}
 	
 	\subsection{行内公式}
 	% 使用单个美元符号排版
@@ -354,7 +362,7 @@
  	\end{equation*}
  	
 % == 10. 排版矩阵
-
+	\section{数学模式—矩阵排版}
 	% 使用 matrix ,引入 amsmath 宏包
 	% 与tabular 表格一样，用 & 分割列，用 \\ 分割行
 	% 在矩阵中也可以使用数学公式
@@ -405,10 +413,124 @@
 			1 & 0
 		\end{Vmatrix}
 	\]
-	
-	% 常用省略号 
+ 	
+ 	% 矩阵中使用上下标
+ 	\[
+ 		\begin{pmatrix}
+ 		a_{11}^{2} & a_{12}^{2} & a_{13}^{2} \\
+ 		0	& a_{22} & a_{23} \\
+ 		0 & 0 & a_{33} \\
+ 		\end{pmatrix}
+ 	\]
+ 	
+ 	% 常用省略号 
  	\(	\dots  \vdots  \ddots \)
  	
+ 	% 带省略号的矩阵
  	
+ 	\[
+ 		\begin{bmatrix}
+ 		a_{11} & \dots	& a_{1n} \\
+ 		       & \ddots & \vdots \\
+ 		0	   & 		& a_{nn} \\
+ 		\end{bmatrix} _{n \times n}
+ 	\]
+ 	
+ 	% 数学模式中，可以使用 \times 排版乘号
+ 	$ x \times y =1 $
+ 	
+ 	% \text 用于在数学模式中临时切换到文本模式
+ 	$ \text{数学公式是：} x \times y = 2 $
+ 	
+ 	% smallmatrix 用于排版行内小矩阵
+ 	我们来看一个行内小矩阵 
+ 	\begin{math}
+ 		\left( % 需要手动加括号，小括号、中括号 或竖线
+ 		\begin{smallmatrix}
+ 		x & y \\
+ 		1 & 2 \\
+ 		\end{smallmatrix}
+ 		\right)
+ 	\end{math}
+ 	
+ % == 数学模式多行公式排版
+ 	\subsection{数学模式-多行公式}
+ 	% 需要引入 amsmath 、amssymb 宏包
+ 	% 可以使用gather环境实现多行公式的排版
+ 	% gather环境默认对公式编号，如果要取消编号，使用 gather*
+ 	% 也可以在 \\ 前使用 \notag 阻止该行编号
+ 	\begin{gather}
+ 		a + b = b + a \notag \\    % 使用 \\ 换行
+ 		a^2 + b^2 + c^2 =0 
+ 	\end{gather}
+ 	
+ 	% 可以使用 align 和 align* 环境 （用*号进行对齐)
+ 	% align* 不对公式编号
+ 	\begin{align}
+ 		x  &= t & x &=\cos t & x &=t \\
+ 		y & = 2t & y &=\sin(t+1) & y &= t 
+ 	\end{align}
+ 	
+ 	% \in 输出属于符号， \mathbb 输出花体字符，需要 amssymb 宏包
+ 	\begin{equation}
+ 		D(x) = \begin{cases}
+ 			1, & \text{如果} x \in \mathbb(Q); \\
+ 			0, & \text{如果} x \in \mathbb(R) \setminus \mathbb{Q}.
+ 		\end{cases}
+ 	\end{equation}
+ 	
+ 	% 常用数学公式
+ 	\subsubsection{常用数学公式}
+ 	% 数学求和公式
+ 	\[
+ 		\sum_{i=1}^{N}(x^2 + y^2)^{i}
+ 	\]
+ 	
+ 	% 明科夫斯基距离公式
+ 	明科夫斯基距离公式:
+ 	\begin{equation} 		
+ 		dist(X,Y) = (\sum_{i=1}^{N}|hash(x_i) - hash(y_i)|^p)^{1/p}
+ 	\end{equation}
+ 	 	
+ 	 	
+ 	 
+ % == 参考文献
+ 	\section{参考文献}
+ 	\subsection{简单排版参考文献}
+ 	% 简单的参考文件排版
+ 	% 参考文献格式：
+ 	% \begin{thebibliography}{编号样本}
+ 	%	\bibitem[记号]{引用标志} 文献条目1
+ 	%		\bibitem[记号]{引用标志} 文献条目1
+ 	% \end{thebibliography}
+ 	% 引用参考文献 \cite
+ 	% \emph 强调文献中的某些内容
+ 	
+ 	这句话引用参考文献
+ 	\begin{thebibliography}{99}
+ 		\bibitem{article1}陈立辉，苏伟，蔡川. \emph{基于LaTex的Web数学公式提取方法研究}[J]. 据算计科学。i2014(06)
+ 		\bibitem{article2}陈立辉，苏伟，蔡川. \emph{基于LaTex的Web数学公式提取方法研究}[J]. 据算计科学。2014(06) \texttt{设置字体}
+ 	\end{thebibliography}
+ 
+ 	\subsection{单独排版参考文献}
+ 	% 在option中将构建操作的默认文献工具设置为 BibTex
+ 	% 创建新文件编辑参考文献的详细信息
+ 	1. 引用的参考文献才会在下边展示出来，没有引用的不会展示出来。参考文献会按照引用自动编号
+ 	这是一个引用了的参考文献 \cite{bookLable}
+ 	
+ 	2. 可以在百度学术引用里点击 BibTex 引用，生成引用格式，粘贴到参考文献文件里。这里引用 
+ 	\cite{韩秋明2018区块链技术国外研究述评}
+ 	知网需要安装 zotero的firefox扩展包
+ 	
+ 	3. 将未引用的参考文献全部列出来 
+ 	
+ 	4. 引用样式 \citet{bookLable}
+ 	
+ 		
+ 	\nocite{*}
+ 	
+ 	\bibliography{bibliography.bib}
+ 	 
  % 文章结束
- \end{document}
+\end{document}
+

@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{bookLable}
+Frank Mittelbach and Michel Goossens.
+\newblock {\em The {{\LaTeX}} Companion}.
+\newblock Tools and Techniques for computer Typesettiong. Addison-Wesley,
+  Boston, second edition, 2004.
+
+\bibitem{Underwood2016Blockchain}
+Sarah Underwood.
+\newblock {\em Blockchain beyond Bitcoin}.
+\newblock 2016.
+
+\bibitem{韩秋明2018区块链技术国外研究述评}
+韩秋明 and 王革.
+\newblock 区块链技术国外研究述评.
+\newblock {\em 科技进步与对策}, 2018.
+
+\end{thebibliography}
